@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<!-- 配置扫描管理Bean的起始包名 -->
+	<context:component-scan base-package="com.neusoft.busmis"></context:component-scan>
+	<!-- 启用AspectJ支持 -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- 启用MVC 注解类解析 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- 配置JSP内置解析器 -->
+	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="prefix" value="/" />
+       <property name="suffix" value=".jsp"></property>
+    </bean>
+    <!-- 配置文件上传解析器，使用Servlet3.1服务器内置的文件解析功能 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	
+	<!-- 配置全局CORS访问 -->
+	<mvc:cors>
+	   <mvc:mapping path="/**"   allowed-origins="http://127.0.0.1:8848"
+             allowed-methods="GET,POST,PUT,DELETE,OPTIONS"
+              />
+
+	</mvc:cors>
+	
+	
+
+	
+	
+       
+    
+    
+
+</beans>
